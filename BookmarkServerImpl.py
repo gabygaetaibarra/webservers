@@ -57,8 +57,9 @@ class AcortarURL(http.server.BaseHTTPRequestHandler):
       self.end_headers()
       self.wfile.write("No se puede fetch la URI '{}'.".format(urilarga).encode())
 
-if __name__ == '__main__':
-    #puerto=
-    dirservidor=('',int(os.environ.get('PORT','8000')))
-    httpd=http.server.HTTPServer(dirservidor,AcortarURL)
-    httpd.serve_forever()
+if __name__=='__main__':
+  puerto=int(os.environ.get('PORT',8000))   # Use PORT if it's there.
+  dirservidor=('',puerto)
+  httpd=http.server.HTTPServer(dirservidor,AcortarURL)
+  httpd.serve_forever()
+
