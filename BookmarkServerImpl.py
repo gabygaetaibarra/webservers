@@ -2,14 +2,14 @@ import http.server; import requests; import os
 from urllib.parse import unquote, parse_qs
 
 memoria={}
-formulario='''<!DOCTYPE html><html lang="e"><meta charset="utf-8">
+formulario='''<!DOCTYPE html><html lang="sp"><meta charset="utf-8">
 <title>Bookmark Server</title>
 <form method="POST">
     <label>URI larga/original:<input name="urilarga"></label>
     <br>
     <label>Nombre corto:<input name="nombrecorto"></label>
     <br>
-    <button type="submit">Guardarr</button>
+    <button type="submit">Guardar</button>
 </form>
 <p>URIs conocidas:
 <pre>{}</pre>'''
@@ -57,8 +57,8 @@ class AcortarURL(http.server.BaseHTTPRequestHandler):
       self.end_headers()
       self.wfile.write("No se puede fetch la URI '{}'.".format(urilarga).encode())
 
-
 if __name__ == '__main__':
-    dirservidor=('',int(os.environ.get('PORT', '8000')))
+    #puerto=
+    dirservidor=('',int(os.environ.get('PORT','8000')))
     httpd=http.server.HTTPServer(dirservidor,AcortarURL)
     httpd.serve_forever()
